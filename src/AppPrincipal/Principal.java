@@ -52,7 +52,8 @@ public class Principal {
             }
 
         }catch (IOException | InterruptedException e){
-            System.out.println("error conexión");
+            e.printStackTrace();// Imprime en orden el seguimiento de los métodos utilizados hasta el punto donde se encontró la excepción.
+
         }
 
 
