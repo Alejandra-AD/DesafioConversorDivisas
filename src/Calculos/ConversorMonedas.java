@@ -1,5 +1,5 @@
 package Calculos;
 
 public interface ConversorMonedas {
-    double convertir(double cantidad,String monedaOrigen,String monedaDestino);
+    void convertir(double cantidad, String monedaOrigen, String monedaDestino);
 }

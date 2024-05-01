@@ -1,19 +1,20 @@
 package Modelos;
 
 import Calculos.ConversorMonedasAPI;
-
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MenuConversorMonedas {
-    private final ConversorMonedasAPI conversor;
-    private boolean salir = false;
+    private final ConversorMonedasAPI conversor;//Declarando una variable que puede contener una referencia a un objeto de tipo ConversorMonedasAPI
+    private boolean salir = false;// Variable que permite salir del menú (bucle while)
 
     public MenuConversorMonedas() {
+        /*Crea un objeto (para instanciar) de la clase ConversorMonedasAPI y se asigna a la variable conversor. Para
+         utilizar sus métodos y propiedades en la clase MenuConversorMonedas.*/
         this.conversor = new ConversorMonedasAPI();
     }
 
+    // Método para mostrar el menú de conversión
     public void mostrarMenu() {
         while (!salir) {
             Scanner scanner = new Scanner(System.in);
@@ -21,7 +22,7 @@ public class MenuConversorMonedas {
                 
                                     Conversor de Monedas
                 -------------------------------------------------------------
-                Seleccione una de nuestras opciones de divisa para convertir:
+                Elija la moneda que desea convertir:
                  1. ARS - Peso argentino
                  2. BOB - Boliviano boliviano
                  3. BRL - Real brasileño
@@ -68,16 +69,13 @@ public class MenuConversorMonedas {
             }
         }
 
-
-
     }
-
+    // Método para ingresar cantidad de monedas a convertir
     private void cantidadMonedasMenu(String monedaOrigen){
 
         System.out.println("\nMoneda seleccionada: " + monedaOrigen);
 
         try {
-            Scanner scanner = new Scanner(System.in);
             Scanner scannerCantidad = new Scanner(System.in);
             System.out.println("Ingrese la cantidad a convertir:");
             double cantidad = scannerCantidad.nextDouble();
@@ -90,12 +88,13 @@ public class MenuConversorMonedas {
 
     }
 
+    // Método para mostrar el menú que permite seleccionar moneda a convertir y mostrar resultado conversión
     private void realizarConversion(double cantidad , String monedaOrigen) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("""
              
-                Seleccione la divisa a la que desea convertir:
+                Seleccione la moneda de conversión:
                  1. ARS - Peso argentino
                  2. BOB - Boliviano boliviano
                  3. BRL - Real brasileño
@@ -123,11 +122,11 @@ public class MenuConversorMonedas {
             default -> System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
         }
 
-        conversor.convertir(cantidad, monedaOrigen, monedaDestino);
+        conversor.convertir(cantidad, monedaOrigen, monedaDestino);//intancia de objeto que llama al método convertir de la clase ConversorMonedasAPI
 
         System.out.println("""
         
-        ¿Desea realizar otra conversion?
+        ¿Desea realizar otra conversión?
         1. Si
         2. No
         
@@ -139,13 +138,14 @@ public class MenuConversorMonedas {
             if (opcion == 1) {
                 mostrarMenu();
             } else if (opcion == 2) {
+                System.out.println("¡Gracias por usar el Conversor de Monedas!");
                 salir = true;
             } else {
-                System.out.println("Volviendo a menú principal");
+                System.out.println("Opción no disponible. Volviendo a menú principal...");
                 mostrarMenu();
             }
         } catch (InputMismatchException e) {
-            System.out.println("Error: Por favor, ingrese una opción válida. Volviendo a menú principal");
+            System.out.println("Error: Por favor, ingrese una opción válida. Volviendo a menú principal...");
             mostrarMenu();
         }
     }

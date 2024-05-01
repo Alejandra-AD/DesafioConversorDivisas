@@ -9,10 +9,16 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
+/*
+ * La clase ConversorMonedasAPI implementa la interfaz ConversorMonedas y proporciona
+ * funcionalidades para convertir una cantidad de una moneda a otra utilizando una API de
+ * tasas de cambio.
+ */
+
 public class ConversorMonedasAPI implements ConversorMonedas {
 
     @Override
-    public double convertir(double cantidad, String monedaOrigen, String monedaDestino) {
+    public void convertir(double cantidad, String monedaOrigen, String monedaDestino) {
 
         double resultado = -1;
 
@@ -54,6 +60,5 @@ public class ConversorMonedasAPI implements ConversorMonedas {
 
         }
 
-        return resultado;
     }
 }
