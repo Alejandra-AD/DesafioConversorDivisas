@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class MenuConversorMonedas {
     private final ConversorMonedasAPI conversor;//Declarando una variable que puede contener una referencia a un objeto de tipo ConversorMonedasAPI
     private boolean salir = false;// Variable que permite salir del menú (bucle while)
-
     public MenuConversorMonedas() {
         /*Crea un objeto (para instanciar) de la clase ConversorMonedasAPI y se asigna a la variable conversor. Para
          utilizar sus métodos y propiedades en la clase MenuConversorMonedas.*/
